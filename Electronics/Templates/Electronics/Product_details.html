@@ -214,6 +214,8 @@
             <div class="product-name">{{ pro.name }}</div>
             <div class="product-price">${{ pro.price }}</div>
             <div class="product-description">{{ pro.description }}</div>
+            <a href="{% url 'update_product' pro.id %}"><Button type="Button">UPDATE</button></a>
+            <a href="{% url 'delete_product' pro.id %}"><Button type="Button">DELETE</button></a>
             <a href="#" class="btn">🛒 Buy Now</a>
         </div>
         {% endfor %}

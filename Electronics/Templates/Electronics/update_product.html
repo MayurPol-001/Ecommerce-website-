@@ -1,0 +1,7 @@
+<!--Update Product.html-->>
+<h2>---UPDATE PRODUCT---</h2>
+<form method='POST'>
+     {% csrf_token %}   <!--Cross Site Request Forzerie-->
+     {{ form.as_p }}
+     <Button type="SUBMIT"> SAVE CHANGES </button>
+</form>
