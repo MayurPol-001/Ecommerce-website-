@@ -3,159 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Store</title>
+    <title>Apple E-Commerce Store</title>
     <style>
-        /* Import Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f0f0f0, #a3c9ff);
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2), url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'); /* Apple logo added here */
+            background-position: center;
+            background-size: 20%; /* Adjust size of the logo */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
         }
 
-        /* Background Text */
-        .bg-text {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 80px;
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.2);
-            z-index: 0;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        /* Header */
         .header {
             width: 100%;
-            background: #1f2937;
+            background: #111;
             color: white;
             padding: 20px;
             text-align: center;
             font-size: 28px;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        /* Product Grid */
-        .product-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Product Card */
-        .product-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            text-align: center;
-            transition: all 0.4s ease-in-out;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        .product-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 15px 0;
-            color: #222;
-        }
-
-        .product-price {
-            color: #ff6b6b;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .product-description {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            background: linear-gradient(90deg, #ff6b6b, #d63230);
-            color: white;
-            padding: 12px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn:hover {
-            transform: scale(1.08);
-            background: linear-gradient(90deg, #d63230, #a52120);
-        }
-
-        /* Form Styling */
         .form-container {
-            background: rgba(255, 255, 255, 0.85);
+            background: #ffffff;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
             width: 100%;
             max-width: 600px;
-            margin: 20px auto;
-            z-index: 2;
             text-align: center;
         }
 
         .form-container input,
-        .form-container select {
+        .form-container textarea {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -163,71 +57,134 @@
             border: 2px solid #ddd;
             border-radius: 8px;
             outline: none;
-            transition: border-color 0.3s ease;
         }
 
-        .form-container input:focus,
-        .form-container select:focus {
-            border-color: #ff6b6b;
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .form-container input[type="submit"] {
-            background: linear-gradient(90deg, #ff6b6b, #d63230);
+        .product-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .product-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .product-price {
+            color: #ff3b30;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .product-description {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff3b30, #c70000);
             color: white;
-            border: none;
-            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease-in-out;
-            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
             font-size: 16px;
-            padding: 12px 18px;
         }
 
-        .form-container input[type="submit"]:hover {
-            background: linear-gradient(90deg, #d63230, #a52120);
+        .btn:hover {
+            transform: scale(1.1);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .product-container {
                 grid-template-columns: 1fr;
-            }
-
-            .bg-text {
-                font-size: 50px;
-                top: 15%;
             }
         }
     </style>
 </head>
 <body>
+    <div class="header">🍏 Welcome to Apple Store 🍏</div>
 
-    <!-- Background Text (for branding effect) -->
-    <div class="bg-text">Shop Now</div>
-
-    <div class="header">🛍 Welcome to Our Store</div>
+    <div class="form-container">
+        <h2>Add New Apple Product</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Product Name" required>
+            <input type="number" name="price" placeholder="Price" required>
+            <textarea name="description" placeholder="Product Description" rows="4" required></textarea>
+            <input type="file" name="img" accept="image/*" required>
+            <input type="submit" value="Add Product" class="btn">
+        </form>
+    </div>
 
     <div class="product-container">
         {% for pro in prod %}
         <div class="product-card">
-            <img src="{{ pro.image_url }}" alt="{{ pro.name }}" class="product-image">
-            <div class="product-name">{{ pro.name }}</div>
-            <div class="product-price">${{ pro.price }}</div>
-            <div class="product-description">{{ pro.description }}</div>
-            <a href="{% url 'update_product' pro.id %}"><Button type="Button">UPDATE</button></a>
-            <a href="{% url 'delete_product' pro.id %}"><Button type="Button">DELETE</button></a>
-            <a href="#" class="btn">🛒 Buy Now</a>
+            {% if pro.img %}
+            <img src="{{ pro.img.url }}" alt="{{ pro.name }}" class="product-image">
+            {% endif %}
+            <div class="product-details">
+                <div class="product-name">{{ pro.name }}</div>
+                <div class="product-price">${{ pro.price }}</div>
+                <div class="product-description">{{ pro.description }}</div>
+                <div class="btn-container">
+                    <a href="{% url 'update_product' pro.id %}" class="btn">Update</a>
+                    <a href="{% url 'delete_product' pro.id %}" class="btn" style="background: #333;">Delete</a>
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
-
-    <!-- Form Container -->
-    <div class="form-container">
-        <form method="post">
-        {% csrf_token %}            <!--To Prevent Attack-->
-        {{ form.as_p }}
-        <input type="submit" value="Add to Cart">
-    </div>
-
 </body>
 </html>

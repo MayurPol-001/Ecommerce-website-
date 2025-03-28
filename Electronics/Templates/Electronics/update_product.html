@@ -1,6 +1,6 @@
 <!--Update Product.html-->>
 <h2>---UPDATE PRODUCT---</h2>
-<form method='POST'>
+<form method='POST' enctype= "multipart/form-data">
      {% csrf_token %}   <!--Cross Site Request Forzerie-->
      {{ form.as_p }}
      <Button type="SUBMIT"> SAVE CHANGES </button>
